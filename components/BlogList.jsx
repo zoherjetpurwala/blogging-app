@@ -11,12 +11,15 @@ const BlogList = () => {
   const fetchBlogs = async () => {
     const response = await axios.get("/api/blog");
     setBlogs(response.data.blogs);
-    console.log(response.data.blogs);
   };
 
   useEffect(() => {
     fetchBlogs();
   }, []);
+
+  const filteredBlogs = blogs.filter((item) =>
+    menu === "All" ? true : item.category === menu
+  );
 
   return (
     <div>
@@ -59,20 +62,20 @@ const BlogList = () => {
         </button>
       </div>
       <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-        {blogs
-          .filter((item) => (menu === "All" ? true : item.category === menu))
-          .map((item) => {
-            return (
-              <BlogItem
-                key={item._id}
-                id={item._id}
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                category={item.category}
-              />
-            );
-          })}
+        {filteredBlogs.length > 0 ? (
+          filteredBlogs.map((item) => (
+            <BlogItem
+              key={item._id}
+              id={item._id}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              category={item.category}
+            />
+          ))
+        ) : (
+          <p className="text-center w-full text-3xl py-40">No Blogs Found &#128543;</p>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
+import { FacebookLogo, InstagramLogo, XLogo } from "@phosphor-icons/react/dist/ssr";
 
 const Footer = () => {
   return (
@@ -9,11 +10,16 @@ const Footer = () => {
       <p className="text-white text-sm ">
         All right reserved. Copyright zBlogs
       </p>
-      <div className="flex">
-        <Image src={assets.facebook_icon} alt="" width={40} />
-        <Image src={assets.twitter_icon} alt="" width={40} />
-        <Image src={assets.googleplus_icon} alt="" width={40} />
-
+      <div className="flex gap-2">
+        <div className="bg-white p-1  rounded-full">
+          <XLogo size={24} color="#000000" weight="duotone" />
+        </div>
+        <div className="bg-white p-1  rounded-full">
+          <InstagramLogo size={24} color="#000000" weight="duotone" />
+        </div>
+        <div className="bg-white p-1 rounded-full">
+          <FacebookLogo size={24} color="#000000" weight="duotone" />
+        </div>
       </div>
     </div>
   );

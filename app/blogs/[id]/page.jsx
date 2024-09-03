@@ -1,6 +1,7 @@
 "use client";
 import { assets, blog_data } from "@/assets/assets";
 import Footer from "@/components/Footer";
+import { FacebookLogo, InstagramLogo, XLogo } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -24,7 +25,7 @@ const BlogPage = ({ params }) => {
 
   return data ? (
     <>
-    {console.log(data)}
+      {console.log(data)}
       <div className="bg-gray-200 py-5 px-5 md:px-12 lg:px-28">
         <div className="flex justify-between items-center">
           <Link href={"/"}>
@@ -123,10 +124,16 @@ const BlogPage = ({ params }) => {
           <p className="text-black font-semibold my-4">
             Share this article on social media
           </p>
-          <div className="flex">
-            <Image src={assets.facebook_icon} alt="" width={50} />
-            <Image src={assets.twitter_icon} alt="" width={50} />
-            <Image src={assets.googleplus_icon} alt="" width={50} />
+          <div className="flex gap-2">
+            <div className="bg-white p-1  rounded-full">
+              <XLogo size={24} color="#000000" weight="duotone" />
+            </div>
+            <div className="bg-white p-1  rounded-full">
+              <InstagramLogo size={24} color="#000000" weight="duotone" />
+            </div>
+            <div className="bg-white p-1 rounded-full">
+              <FacebookLogo size={24} color="#000000" weight="duotone" />
+            </div>
           </div>
         </div>
       </div>

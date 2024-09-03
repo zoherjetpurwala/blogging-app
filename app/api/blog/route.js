@@ -69,6 +69,7 @@ export async function POST(request) {
 
     imageURL = response.data.data.url;
     console.log(`Image uploaded: ${imageURL}`);
+
   } catch (error) {
     console.error("Error uploading image to ImgBB:", error);
     return NextResponse.json({ error: "Image upload failed" }, { status: 500 });
@@ -93,5 +94,32 @@ export async function POST(request) {
   } catch (error) {
     console.error("Error saving blog data:", error);
     return NextResponse.json({ error: "Blog save failed" }, { status: 500 });
+  }
+}
+
+
+export async function DELETE(request) {
+  const blogId = await request.nextUrl.searchParams.get("id");
+
+  // Find the blog by ID
+  const getBlog = await BlogModel.findById(blogId);
+  if (!getBlog) {
+    return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+  }
+
+  // Delete the blog from MongoDB
+  try {
+    await BlogModel.findByIdAndDelete(blogId);
+    console.log("Blog deleted");
+    return NextResponse.json({
+      success: true,
+      message: "Blog and image deleted",
+    });
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    return NextResponse.json(
+      { error: "Blog deletion failed" },
+      { status: 500 }
+    );
   }
 }

@@ -13,7 +13,7 @@ const BlogItem = ({ title, description, category, image, id }) => {
           alt=""
           width={400}
           height={400}
-          className="border-b border-black"
+          className="border-b border-black w-[400px] h-[200px] bg-cover"
         />
       </Link>
 
