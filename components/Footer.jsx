@@ -6,8 +6,8 @@ import { FacebookLogo, InstagramLogo, XLogo } from "@phosphor-icons/react/dist/s
 const Footer = () => {
   return (
     <div className="flex justify-around flex-col gap-2 sm:gap-0 sm:flex-row bg-black py-5 items-center">
-      <Image src={assets.logo_light} alt="" width={120} />
-      <p className="text-white text-sm ">
+        <h1 className="text-white text-xl sm:text-2xl font-medium">zBlogs.</h1>
+        <p className="text-white text-sm ">
         All right reserved. Copyright zBlogs
       </p>
       <div className="flex gap-2">
