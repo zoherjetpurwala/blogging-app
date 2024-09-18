@@ -23,7 +23,7 @@ const BlogList = () => {
 
   return (
     <div>
-      <div className="flex justify-center gap-6 my-10">
+      <div className="flex justify-center gap-6 mb-10">
         <button
           onClick={() => setMenu("All")}
           className={
